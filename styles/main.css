@@ -340,6 +340,47 @@ template {
   display: none;
 }
 
+.keyboard {
+  display: flex;
+  padding: 5px;
+  width: 704px;
+  margin: 0 auto;
+  padding: 5px;
+  padding-left: 0;
+  padding-bottom: 0;
+  background: #888888;
+  border: 3px solid #222222;
+  border-radius: 5px;
+}
+
+.keyboard__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  flex-grow: 1;
+  height: 45px;
+  width: 6%;
+  max-width: 90px;
+  margin: 3px;
+  border-radius: 4px;
+  border: none;
+  background: #444444;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .main {
   box-sizing: inherit;
   font-family: "Arial";
@@ -354,4 +395,20 @@ template {
   min-width: 300px;
   margin: 0 auto;
   padding: 0 40px;
+}
+
+.title {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.textarea {
+  display: block;
+  width: 700px;
+  height: 200px;
+  margin: 10px auto 10px;
+  padding: 10px;
+  font-size: 18px;
+  color: #444444;
+  resize: none;
 }/*# sourceMappingURL=main.css.map */
