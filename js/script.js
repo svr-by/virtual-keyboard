@@ -1,5 +1,6 @@
-import keyCodes from './keycodes.js';
-import { createPage, createKeyboard } from './functions.js';
+import { buildPage } from './functions.js';
+import Keyboard from './keyboard.js';
 
-createPage();
-createKeyboard(keyCodes);
+const WRAPPER = buildPage();
+const KEYBOARD = new Keyboard();
+KEYBOARD.buildKeyboard(WRAPPER);

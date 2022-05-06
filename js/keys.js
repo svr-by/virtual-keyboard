@@ -1,4 +1,25 @@
-export default [
+export class Key {
+  constructor(key) {
+    this.code = key.code;
+    this.lowerEn = key.lowerEn;
+    this.upperEn = key.upperEn;
+    this.lowerRu = key.lowerRu;
+    this.upperRu = key.upperRu;
+    this.char = this.lowerEn;
+    this.shift = false;
+    this.buildKey();
+  }
+
+  buildKey() {
+    this.element = document.createElement('div');
+    this.element.classList.add('key');
+    this.element.classList.add(`${this.code}`);
+    this.element.dataset.code = this.code;
+    this.element.innerText = this.char;
+  }
+}
+
+export const KEY_CODES = [
   {
     code: 'Backquote', lowerEn: '`', upperEn: '~', lowerRu: 'ё', upperRu: 'Ё'
   },

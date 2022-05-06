@@ -343,11 +343,8 @@ template {
 .keyboard {
   display: flex;
   padding: 5px;
-  width: 704px;
+  width: 710px;
   margin: 0 auto;
-  padding: 5px;
-  padding-left: 0;
-  padding-bottom: 0;
   background: #888888;
   border: 3px solid #222222;
   border-radius: 5px;
@@ -367,7 +364,7 @@ template {
   height: 45px;
   width: 6%;
   max-width: 90px;
-  margin: 3px;
+  margin: 2px;
   border-radius: 4px;
   border: none;
   background: #444444;
@@ -379,6 +376,18 @@ template {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+.key:hover {
+  background: #666666;
+}
+.key.Backspace, .key.CapsLock, .key.Enter, .key.ShiftLeft, .key.ShiftRight {
+  width: 13%;
+  flex-grow: 2;
+}
+.key.Space {
+  width: 46%;
+  max-width: 400px;
+  flex-grow: 3;
 }
 
 .main {
@@ -398,6 +407,7 @@ template {
 }
 
 .title {
+  padding-top: 100px;
   margin: 10px auto;
   text-align: center;
 }
