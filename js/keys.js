@@ -1,21 +1,20 @@
 export class Key {
-  constructor(key) {
+  constructor(key, lang) {
     this.code = key.code;
     this.lowerEn = key.lowerEn;
     this.upperEn = key.upperEn;
     this.lowerRu = key.lowerRu;
     this.upperRu = key.upperRu;
-    this.char = this.lowerEn;
-    this.shift = false;
-    this.buildKey();
+    this.visibleChar = this.lowerEn;
+    this.buildKey(lang);
   }
 
-  buildKey() {
+  buildKey(lang) {
     this.element = document.createElement('div');
     this.element.classList.add('key');
     this.element.classList.add(`${this.code}`);
     this.element.dataset.code = this.code;
-    this.element.innerText = this.char;
+    this.chageVisibleChar(lang, false);
   }
 
   changeCondition(action) {
@@ -24,6 +23,16 @@ export class Key {
     } else {
       this.element.classList.remove('pressed');
     }
+  }
+
+  chageVisibleChar(lang, shift) {
+    if (lang === 'ENG') {
+      this.visibleChar = (shift === true) ? this.upperEn : this.lowerEn;
+    }
+    if (lang === 'RUS') {
+      this.visibleChar = (shift === true) ? this.upperRu : this.lowerRu;
+    }
+    this.element.innerText = this.visibleChar;
   }
 }
 
