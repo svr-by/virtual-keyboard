@@ -13,6 +13,9 @@ export class Key {
     this.element = document.createElement('div');
     this.element.classList.add('key');
     this.element.dataset.code = this.code;
+    if (this.lowerRu.match(/[а-я]/)) {
+      this.element.dataset.lang = lang;
+    }
     this.chageVisibleChar(lang, false);
   }
 
@@ -37,6 +40,9 @@ export class Key {
     }
     if (lang === 'RUS') {
       this.visibleChar = (shift === true) ? this.upperRu : this.lowerRu;
+    }
+    if (this.element.dataset.lang) {
+      this.element.dataset.lang = lang;
     }
     this.element.innerText = this.visibleChar;
   }

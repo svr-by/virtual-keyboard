@@ -79,6 +79,8 @@ export default class Keyboard {
 
     let keyObj = this.keys.find(key => key.code === code);
     if (keyObj) keyObj.changeCondition('press');
+
+    this.printChars(keyObj);
   }
 
   handleEventUp(code, ctrlKey) {
@@ -106,5 +108,34 @@ export default class Keyboard {
 
   chageNonLetterChars(shift = this.shift) {
     this.nonLetterKeys.forEach(keyObj => keyObj.chageVisibleChar(this.lang, shift));
+  }
+
+  printChars(keyObj) {
+    this.elements.textarea.focus();
+    switch (keyObj.code) {
+      case 'ShiftLeft':
+      case 'ShiftRight':
+      case 'CapsLock':
+      case 'AltLeft':
+      case 'AltRight':
+      case 'ControlLeft':
+      case 'ControlRight':
+      case 'MetaLeft':
+        break;
+      case 'Backspace':
+      case 'Tab':
+      case 'Del':
+      case 'Enter':
+        this.elements.textarea.value += '\n';
+        break;
+      case 'ArrowUp':
+      case 'ArrowDown':
+      case 'ArrowRight':
+      case 'ArrowLeft':
+        break;
+      default:
+        this.elements.textarea.value += `${keyObj.visibleChar}`;
+        break;
+    }
   }
 }

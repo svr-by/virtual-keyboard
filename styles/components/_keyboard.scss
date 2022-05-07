@@ -49,6 +49,10 @@
         flex-grow: 3;
     }
 
+    &[data-lang="RUS"] {
+        color: #25ed43;
+    }
+
     &.key--pressed {
         border-radius: 20px;
         background: #0095ff;
