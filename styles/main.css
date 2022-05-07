@@ -350,7 +350,7 @@ template {
   border-radius: 5px;
 }
 
-.keyboard__wrapper {
+.keyboard__inner {
   display: flex;
   flex-wrap: wrap;
 }
@@ -388,6 +388,10 @@ template {
   width: 46%;
   max-width: 400px;
   flex-grow: 3;
+}
+.key.pressed {
+  border-radius: 20px;
+  background: #0095ff;
 }
 
 .main {

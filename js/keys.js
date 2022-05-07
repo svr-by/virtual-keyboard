@@ -17,6 +17,14 @@ export class Key {
     this.element.dataset.code = this.code;
     this.element.innerText = this.char;
   }
+
+  changeCondition(action) {
+    if (action === true) {
+      this.element.classList.add('pressed');
+    } else {
+      this.element.classList.remove('pressed');
+    }
+  }
 }
 
 export const KEY_CODES = [
@@ -198,7 +206,7 @@ export const KEY_CODES = [
     code: 'Space', lowerEn: ' ', upperEn: ' ', upperRu: ' ', lowerRu: ' '
   },
   {
-    code: 'AltRight', lowerEn: 'alt', upperEn: 'alt', upperRu: 'alt', lowerRu: 'alt'
+    code: 'AltRight', lowerEn: 'Alt', upperEn: 'Alt', upperRu: 'Alt', lowerRu: 'Alt'
   },
   {
     code: 'ArrowLeft', lowerEn: '←', upperEn: '←', upperRu: '←', lowerRu: '←'
