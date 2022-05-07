@@ -34,22 +34,22 @@
         background: #666666;
     }
 
-    &.Backspace,
-    &.CapsLock,
-    &.Enter,
-    &.ShiftLeft,
-    &.ShiftRight {
+    &[data-code="Backspace"],
+    &[data-code="CapsLock"],
+    &[data-code="Enter"],
+    &[data-code="ShiftLeft"],
+    &[data-code="ShiftRight"] {
         width: 13%;
         flex-grow: 2;
     }
 
-    &.Space {
+    &[data-code="Space"] {
         width: 46%;
         max-width: 400px;
         flex-grow: 3;
     }
 
-    &.pressed {
+    &.key--pressed {
         border-radius: 20px;
         background: #0095ff;
     }

@@ -12,16 +12,22 @@ export class Key {
   buildKey(lang) {
     this.element = document.createElement('div');
     this.element.classList.add('key');
-    this.element.classList.add(`${this.code}`);
     this.element.dataset.code = this.code;
     this.chageVisibleChar(lang, false);
   }
 
   changeCondition(action) {
-    if (action === true) {
-      this.element.classList.add('pressed');
-    } else {
-      this.element.classList.remove('pressed');
+    if (action === 'press') {
+      if (this.element.dataset.code === 'CapsLock') {
+        this.element.classList.toggle('key--pressed');
+      } else {
+        this.element.classList.add('key--pressed');
+      }
+    }
+    if (action === 'unpress') {
+      if (this.element.dataset.code !== 'CapsLock') {
+        this.element.classList.remove('key--pressed');
+      }
     }
   }
 

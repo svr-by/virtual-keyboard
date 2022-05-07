@@ -8,6 +8,8 @@ export default class Keyboard {
     this.capsLk = false;
     this.elements = {};
     this.keys = KEY_CODES.map(keyObj => new Key(keyObj, this.lang));
+    this.letterKeys = this.keys.filter(keyObj => keyObj.visibleChar.match(/[а-яА-ЯЁёa-zA-Z]/));
+    this.nonLetterKeys = this.keys.filter(keyObj => keyObj.visibleChar.match(/[^а-яА-ЯЁёa-zA-Z]/));
   }
 
   buildKeyboard(wrapper) {
@@ -16,7 +18,7 @@ export default class Keyboard {
     this.elements.keyboard = buildElement('div', 'keyboard', wrapper);
     this.elements.keyboardInner = buildElement('div', 'keyboard__inner', this.elements.keyboard);
     this.keys.forEach(keyObj => this.elements.keyboardInner.appendChild(keyObj.element));
-    this.elements.help = buildElement('p', 'help', wrapper, 'Use Ctrl+Shift to switch language');
+    this.elements.help = buildElement('p', 'help', wrapper, 'Use Ctrl+Shift to switch language. Windows OS.');
     this.addListeners();
   }
 
@@ -55,28 +57,54 @@ export default class Keyboard {
       if (ctrlKey === true) {
         this.lang = (this.lang === 'ENG') ? 'RUS' : 'ENG';
         localStorage.setItem('language', this.lang);
-        this.chageChars();
+        if (this.capsLk) {
+          this.chageAllChars();
+          this.chageLetterChars(true);
+        } else {
+          this.chageAllChars();
+        }
       } else {
         this.shift = true;
-        this.chageChars();
+        this.chageAllChars();
       }
     }
+    if (code === 'CapsLock') {
+      this.capsLk = !this.capsLk;
+      if (this.capsLk) {
+        this.chageLetterChars(true);
+      } else {
+        this.chageAllChars();
+      }
+    }
+
     let keyObj = this.keys.find(key => key.code === code);
-    if (keyObj) keyObj.changeCondition(true);
+    if (keyObj) keyObj.changeCondition('press');
   }
 
   handleEventUp(code, ctrlKey) {
     if (code === 'ShiftLeft' || code === 'ShiftRight') {
       if (ctrlKey !== true) {
         this.shift = false;
-        this.chageChars();
+        if (this.capsLk) {
+          this.chageNonLetterChars();
+        } else {
+          this.chageAllChars();
+        }
       }
     }
     let keyObj = this.keys.find(key => key.code === code);
-    if (keyObj) keyObj.changeCondition();
+    if (keyObj) keyObj.changeCondition('unpress');
   }
 
-  chageChars() {
-    this.keys.forEach(keyObj => keyObj.chageVisibleChar(this.lang, this.shift));
+  chageAllChars(shift = this.shift) {
+    this.keys.forEach(keyObj => keyObj.chageVisibleChar(this.lang, shift));
+  }
+
+  chageLetterChars(shift = this.shift) {
+    this.letterKeys.forEach(keyObj => keyObj.chageVisibleChar(this.lang, shift));
+  }
+
+  chageNonLetterChars(shift = this.shift) {
+    this.nonLetterKeys.forEach(keyObj => keyObj.chageVisibleChar(this.lang, shift));
   }
 }

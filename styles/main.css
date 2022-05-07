@@ -380,16 +380,16 @@ template {
 .key:hover {
   background: #666666;
 }
-.key.Backspace, .key.CapsLock, .key.Enter, .key.ShiftLeft, .key.ShiftRight {
+.key[data-code=Backspace], .key[data-code=CapsLock], .key[data-code=Enter], .key[data-code=ShiftLeft], .key[data-code=ShiftRight] {
   width: 13%;
   flex-grow: 2;
 }
-.key.Space {
+.key[data-code=Space] {
   width: 46%;
   max-width: 400px;
   flex-grow: 3;
 }
-.key.pressed {
+.key.key--pressed {
   border-radius: 20px;
   background: #0095ff;
 }
