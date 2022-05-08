@@ -13,7 +13,7 @@ export class Key {
     this.element = document.createElement('div');
     this.element.classList.add('key');
     this.element.dataset.code = this.code;
-    if (this.lowerRu.match(/[а-я]/)) {
+    if (this.lowerRu.match(/[а-яё]/)) {
       this.element.dataset.lang = lang;
     }
     this.chageVisibleChar(lang, false);
@@ -41,9 +41,8 @@ export class Key {
     if (lang === 'RUS') {
       this.visibleChar = (shift === true) ? this.upperRu : this.lowerRu;
     }
-    if (this.element.dataset.lang) {
-      this.element.dataset.lang = lang;
-    }
+    if (this.element.dataset.lang) this.element.dataset.lang = lang;
+
     this.element.innerText = this.visibleChar;
   }
 }
@@ -134,7 +133,7 @@ export const KEY_CODES = [
     code: 'Backslash', lowerEn: '\\', upperEn: '|', lowerRu: '\\', upperRu: '/'
   },
   {
-    code: 'Del', lowerEn: 'Del', upperEn: 'Del', lowerRu: 'Del', upperRu: 'Del'
+    code: 'Delete', lowerEn: 'Del', upperEn: 'Del', lowerRu: 'Del', upperRu: 'Del'
   },
   {
     code: 'CapsLock', lowerEn: 'CapsLock', upperEn: 'CapsLock', upperRu: 'CapsLock', lowerRu: 'CapsLock'
@@ -209,7 +208,7 @@ export const KEY_CODES = [
     code: 'Slash', lowerEn: '/', upperEn: '?', upperRu: '.', lowerRu: ','
   },
   {
-    code: 'ArrowUp', lowerEn: '↑', upperEn: '↑', upperRu: '↑', lowerRu: '↑'
+    code: 'ArrowUp', lowerEn: '▲', upperEn: '▲', upperRu: '▲', lowerRu: '▲'
   },
   {
     code: 'ShiftRight', lowerEn: 'Shift', upperEn: 'Shift', upperRu: 'Shift', lowerRu: 'Shift'
@@ -230,13 +229,13 @@ export const KEY_CODES = [
     code: 'AltRight', lowerEn: 'Alt', upperEn: 'Alt', upperRu: 'Alt', lowerRu: 'Alt'
   },
   {
-    code: 'ArrowLeft', lowerEn: '←', upperEn: '←', upperRu: '←', lowerRu: '←'
+    code: 'ArrowLeft', lowerEn: '◄', upperEn: '◄', upperRu: '◄', lowerRu: '◄'
   },
   {
-    code: 'ArrowDown', lowerEn: '↓', upperEn: '↓', upperRu: '↓', lowerRu: '↓'
+    code: 'ArrowDown', lowerEn: '▼', upperEn: '▼', upperRu: '▼', lowerRu: '▼'
   },
   {
-    code: 'ArrowRight', lowerEn: '→', upperEn: '→', upperRu: '→', lowerRu: '→'
+    code: 'ArrowRight', lowerEn: '►', upperEn: '►', upperRu: '►', lowerRu: '►'
   },
   {
     code: 'ControlRight', lowerEn: 'Ctrl', upperEn: 'Ctrl', upperRu: 'Ctrl', lowerRu: 'Ctrl'

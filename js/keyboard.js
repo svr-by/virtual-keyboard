@@ -112,6 +112,11 @@ export default class Keyboard {
 
   printChars(keyObj) {
     this.elements.textarea.focus();
+    let cursorPos = this.elements.textarea.selectionStart;
+    let leftValue = this.elements.textarea.value.slice(0, cursorPos);
+    let rightValue = this.elements.textarea.value.slice(cursorPos);
+
+    if (!keyObj) return;
     switch (keyObj.code) {
       case 'ShiftLeft':
       case 'ShiftRight':
@@ -123,19 +128,50 @@ export default class Keyboard {
       case 'MetaLeft':
         break;
       case 'Backspace':
+        if (cursorPos === 0) {
+          cursorPos = 0;
+        } else {
+          this.elements.textarea.value = `${leftValue.slice(0, -1)}${rightValue}`;
+          cursorPos -= 1;
+        }
+        break;
+      case 'Delete':
+        this.elements.textarea.value = `${leftValue}${rightValue.slice(1)}`;
+        break;
       case 'Tab':
-      case 'Del':
+        this.elements.textarea.value = `${leftValue}\t${rightValue}`;
+        cursorPos += 1;
+        break;
       case 'Enter':
-        this.elements.textarea.value += '\n';
+        this.elements.textarea.value = `${leftValue}\n${rightValue}`;
+        cursorPos += 1;
         break;
       case 'ArrowUp':
+        if (leftValue.lastIndexOf('\n') === -1) {
+          cursorPos = 0;
+        } else {
+          cursorPos -= leftValue.slice(leftValue.lastIndexOf('\n')).length;
+        }
+        break;
       case 'ArrowDown':
+        if (rightValue.indexOf('\n') === -1) {
+          cursorPos += rightValue.length;
+        } else {
+          cursorPos += rightValue.indexOf('\n') + 1;
+        }
+        break;
       case 'ArrowRight':
+        cursorPos += 1;
+        break;
       case 'ArrowLeft':
+        cursorPos = (cursorPos < 1) ? 0 : cursorPos - 1;
         break;
       default:
-        this.elements.textarea.value += `${keyObj.visibleChar}`;
+        this.elements.textarea.value = `${leftValue}${keyObj.visibleChar}${rightValue}`;
+        cursorPos += 1;
         break;
     }
+
+    this.elements.textarea.setSelectionRange(cursorPos, cursorPos);
   }
 }
