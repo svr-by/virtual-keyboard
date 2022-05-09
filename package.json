@@ -1,0 +1,28 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "RSS task",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svr-by/virtual-keyboard.git"
+  },
+  "keywords": [
+    "keyboard"
+  ],
+  "author": "Siarhei Rachkouski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svr-by/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/svr-by/virtual-keyboard#readme",
+  "devDependencies": {
+    "eslint": "^8.14.0"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^15.0.0"
+  }
+}
