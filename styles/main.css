@@ -340,14 +340,61 @@ template {
   display: none;
 }
 
+/* ubuntu-regular - latin_cyrillic */
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("../assets/fonts/ubuntu-v20-latin_cyrillic-regular.woff2") format("woff2"), url("../assets/fonts/ubuntu-v20-latin_cyrillic-regular.woff") format("woff");
+}
+.wrapper__inner {
+  width: 800px;
+  border: 1px solid #9fc9d8;
+  border-radius: 50px;
+  margin: 0 auto;
+  background-color: #527581;
+  background: radial-gradient(circle, rgb(132, 173, 185) 0%, rgb(20, 38, 49) 100%);
+  background-position: 0% 20%;
+  background-size: 200% 200%;
+}
+
+.title {
+  padding: 50px;
+  margin: 0px auto;
+  text-align: center;
+  color: #dddddd;
+}
+
+.textarea {
+  display: block;
+  width: 700px;
+  height: 200px;
+  margin: 10px auto 10px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(132, 173, 185, 0);
+  color: #dddddd;
+  border: none;
+  border-radius: 5px;
+  resize: none;
+}
+.textarea:focus {
+  outline: 1px solid #9fc9d8;
+}
+.textarea::-webkit-scrollbar {
+  width: 7px;
+  background-color: #527581;
+}
+.textarea::-webkit-scrollbar-thumb {
+  background-color: #9fc9d8;
+}
+
 .keyboard {
-  display: flex;
   padding: 5px;
   width: 710px;
   margin: 0 auto;
-  background: #888888;
-  border: 1px solid #222222;
-  border-radius: 5px;
+  background: none;
+  border: none;
 }
 
 .keyboard__inner {
@@ -356,18 +403,17 @@ template {
 }
 
 .key {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
   flex-grow: 1;
   height: 45px;
+  line-height: 40px;
+  text-align: center;
   width: 6%;
   max-width: 90px;
-  margin: 2px;
+  margin: 1px;
+  border: 1px solid #9fc9d8;
   border-radius: 4px;
-  border: none;
-  background: #444444;
+  background: rgb(129, 171, 183);
+  background: linear-gradient(180deg, rgba(129, 171, 183, 0.5) 0%, rgba(52, 83, 94, 0.5) 100%);
   color: #ffffff;
   cursor: pointer;
   padding: 0;
@@ -378,7 +424,7 @@ template {
           user-select: none;
 }
 .key:hover {
-  background: #666666;
+  background: rgb(129, 171, 183);
 }
 .key[data-code=Backspace], .key[data-code=CapsLock], .key[data-code=Enter], .key[data-code=ShiftLeft], .key[data-code=ShiftRight] {
   width: 13%;
@@ -390,48 +436,37 @@ template {
   flex-grow: 3;
 }
 .key[data-lang=RUS] {
-  color: #25ed43;
+  color: #49fdf4;
 }
 .key.key--pressed {
   border-radius: 20px;
-  background: #0095ff;
+  background: rgb(44, 86, 100);
 }
 
 .help {
   margin: 10px auto;
   text-align: center;
+  color: #dddddd;
+}
+
+body {
+  background: rgb(132, 173, 185);
+  background: radial-gradient(circle, rgb(132, 173, 185) 0%, rgb(10, 38, 49) 100%);
 }
 
 .main {
   box-sizing: inherit;
-  font-family: "Arial";
+  font-family: "Ubuntu";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 160%;
+  height: 100vh;
 }
 
 .wrapper {
   max-width: 1280px;
-  min-width: 300px;
+  min-width: 800px;
   margin: 0 auto;
-  padding: 0 40px;
-}
-
-.title {
-  padding-top: 100px;
-  margin: 10px auto;
-  text-align: center;
-}
-
-.textarea {
-  display: block;
-  width: 700px;
-  height: 200px;
-  margin: 10px auto 10px;
-  padding: 10px;
-  font-size: 18px;
-  color: #444444;
-  border-radius: 5px;
-  resize: none;
+  padding: 100px 0 0;
 }/*# sourceMappingURL=main.css.map */

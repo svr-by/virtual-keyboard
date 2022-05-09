@@ -13,12 +13,14 @@ export default class Keyboard {
   }
 
   buildKeyboard(wrapper) {
-    this.elements.title = buildElement('h1', 'title', wrapper, 'Virtual keyboard');
-    this.elements.textarea = buildElement('textarea', 'textarea', wrapper);
-    this.elements.keyboard = buildElement('div', 'keyboard', wrapper);
+    this.elements.wrapperInner = buildElement('div', 'wrapper__inner', wrapper);
+    this.elements.title = buildElement('h1', 'title', this.elements.wrapperInner, 'VIRTUAL KEYBOARD');
+    this.elements.textarea = buildElement('textarea', 'textarea', this.elements.wrapperInner);
+    this.elements.textarea.setAttribute('spellcheck', false);
+    this.elements.keyboard = buildElement('div', 'keyboard', this.elements.wrapperInner);
     this.elements.keyboardInner = buildElement('div', 'keyboard__inner', this.elements.keyboard);
     this.keys.forEach(keyObj => this.elements.keyboardInner.appendChild(keyObj.element));
-    this.elements.help = buildElement('p', 'help', wrapper, 'Use Ctrl+Shift to switch language. Windows OS.');
+    this.elements.help = buildElement('p', 'help', this.elements.wrapperInner, 'Use Ctrl+Shift to switch language. Windows OS.');
     this.addListeners();
   }
 

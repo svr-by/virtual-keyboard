@@ -1,10 +1,11 @@
 export class Key {
   constructor(key, lang) {
     this.code = key.code;
-    this.lowerEn = key.lowerEn;
-    this.upperEn = key.upperEn;
-    this.lowerRu = key.lowerRu;
-    this.upperRu = key.upperRu;
+    [this.lowerEn, this.upperEn] = [key.lowerEn, key.upperEn];
+    [this.lowerRu, this.upperRu] = [key.lowerRu, key.upperRu];
+    // this.upperEn = key.upperEn;
+    // this.lowerRu = key.lowerRu;
+    // this.upperRu = key.upperRu;
     this.visibleChar = this.lowerEn;
     this.buildKey(lang);
   }
